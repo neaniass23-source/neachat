@@ -1,0 +1,18 @@
+name: AnunciosChat
+version: '${project.version}'
+main: dev.anuncioschat.AnunciosChat
+api-version: '1.20'
+description: Anuncios automaticos en el chat con colores, clics, hover e imagenes de pixeles.
+softdepend: [PlaceholderAPI]
+commands:
+  anuncios:
+    description: Gestiona los anuncios del chat.
+    usage: /<command> <enviar|probar|lista|recargar|silenciar>
+    aliases: [anuncio]
+permissions:
+  anuncioschat.admin:
+    description: Permite enviar, probar y recargar los anuncios.
+    default: op
+  anuncioschat.silenciar:
+    description: Permite silenciar los anuncios para uno mismo.
+    default: true

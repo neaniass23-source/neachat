@@ -1,0 +1,109 @@
+# ============================================================
+#  AnunciosChat - configuracion
+# ============================================================
+#  FORMATO DE LAS LINEAS
+#   Colores ........ &a &l &n ... y hexadecimal &#RRGGBB
+#   Centrar ........ <center> al principio de la linea
+#   Clic ........... <click:open_url:https://web.es>texto</click>
+#                    <click:run_command:/comando>texto</click>
+#                    <click:suggest_command:/comando>texto</click>
+#                    <click:copy_to_clipboard:texto>texto</click>
+#   Hover .......... <hover:&7Texto al pasar el raton>texto</hover>
+#                    (usa \n para saltar de linea; no uses el simbolo > dentro)
+#   Variables ...... %player% (o %jugador%) y cualquier placeholder de
+#                    PlaceholderAPI si lo tienes instalado.
+#   Linea vacia .... '' (dos comillas simples)
+# ============================================================
+
+# Cada cuantos segundos sale un anuncio.
+intervalo-segundos: 180
+
+# SECUENCIAL = uno detras de otro | ALEATORIO
+modo: SECUENCIAL
+
+# No se envian anuncios si hay menos jugadores conectados que este numero.
+minimo-jugadores: 1
+
+# Mundos donde NO se muestran los anuncios.
+mundos-excluidos: []
+
+# Sonido al recibir un anuncio. Dejalo vacio para ninguno.
+# Ejemplo: entity.experience_orb.pickup
+sonido: ""
+
+# Caracter usado para dibujar las imagenes y color de los pixeles transparentes.
+imagen-caracter: "█"
+imagen-color-transparente: "#14161f"
+
+anuncios:
+
+  # --- Bloque con titulo centrado, tienda y discord ---
+  informacion:
+    lineas:
+      - '<center>&#fed571&lꜱ&#fed271&lᴄ&#fecf70&lᴀ&#fecc70&lɴ&#feca70&lᴅ&#fdc770&lɪ&#fdc470&lᴄ&#fdc16f&lᴍ&#fdbe6f&lᴄ'
+      - ''
+      - '  &#fffa74&lᴛɪᴇɴᴅᴀ &f<click:open_url:https://tienda.tuservidor.es><hover:&7Click para abrir la tienda>tienda.tuservidor.es</hover></click>'
+      - '  &#fffa74&lᴅɪꜱᴄᴏʀᴅ &f<click:open_url:https://discord.gg/tu-invitacion><hover:&7Click para unirte>discord.tuservidor.es</hover></click>'
+      - ''
+
+  # --- Aviso de una sola linea ---
+  recordatorio:
+    lineas:
+      - '&#fed571&lꜱᴄᴀɴᴅɪᴄᴍᴄ &8| &cEl pvp esta desactivado.'
+
+  # --- Linea con texto clicable ---
+  recompensa:
+    lineas:
+      - '&#fed571&lꜱᴄᴀɴᴅɪᴄᴍᴄ &aTienes una Recompensa Diaria esperando ser reclamada!'
+      - '<click:run_command:/recompensa><hover:&aClick para reclamar>&a&n¡Haz clic aquí</hover></click> &apara reclamar tu recompensa!'
+
+  # --- Anuncio con imagen de pixeles a la izquierda y texto a la derecha ---
+  discord:
+    imagen:
+      archivo: discord.png      # dentro de plugins/AnunciosChat/imagenes/
+      ancho: 7                  # columnas (se reescala la imagen)
+      alto: 7                   # filas
+      separacion: 2             # espacios entre la imagen y el texto
+      desplazamiento: 0         # lineas que baja el texto respecto a la imagen
+    lineas:
+      - '&#5865F2Comunidad Discord'
+      - '&7Eventos, noticias y sorteos.'
+      - '&7Soporte técnico y canales de voz.'
+      - ''
+      - '&7Click para unirte'
+      - '&8» <click:open_url:https://discord.gg/tu-invitacion><hover:&7Abrir el enlace>&e&ndiscord.gg/tu-invitacion</hover></click>'
+
+  # --- Anuncio con calavera: sistema de almas ---
+  almas:
+    imagen:
+      archivo: almas.png
+      ancho: 7
+      alto: 7
+      separacion: 2
+      desplazamiento: 0
+    lineas:
+      - '&#13b7c9☠ Sistema de Almas'
+      - '&7Elimina mobs en las mazmorras.'
+      - '&7Gasta tus almas en la tienda especial.'
+      - ''
+      - '&7Comandos disponibles'
+      - '&8» <click:run_command:/warp dungeons><hover:&7Click para ir a las mazmorras>&#fffa74/warp dungeons</hover></click> &8· <click:run_command:/almas><hover:&7Click para ver tus almas>&#fffa74/almas</hover></click>'
+
+  # --- Enlace de la tienda ---
+  tienda:
+    lineas:
+      - '  &8‣ &7Click al enlace para ir'
+      - '&#fffa74▎ &7Tienda: <click:open_url:https://tienda.tuservidor.es><hover:&7Abrir la tienda>&7&ntienda.tuservidor.es</hover></click>'
+
+mensajes:
+  prefijo: "&7[&#fed571Anuncios&7] "
+  sin-permiso: "&cNo tienes permiso para eso."
+  uso: "&cUso: &f/anuncios <enviar|probar|lista|recargar|silenciar>"
+  no-existe: "&cNo existe el anuncio &f%id%&c."
+  enviado: "&aAnuncio &f%id% &aenviado."
+  recargado: "&aConfiguracion recargada (&f%cantidad% &aanuncios)."
+  lista-titulo: "&eAnuncios cargados:"
+  lista-entrada: "&8 - &f%id%"
+  silenciados: "&eHas silenciado los anuncios. Usa &f/anuncios silenciar &epara volver a verlos."
+  activados: "&aVolveras a ver los anuncios."
+  solo-jugadores: "&cSolo un jugador puede usar eso."
